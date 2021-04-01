@@ -3,8 +3,8 @@
     margin: 0;
     padding: 0;
     color: black;
-    background-image: url('../images/blac.jpg') ;
-    background-size: cover;
+    /* background-image: url('../images/blac.jpg') ; */
+    /* background-size: cover; */
     background-color: lavender;
 }
 h1{
@@ -54,6 +54,7 @@ img{
     border-radius: 1rem;
     animation-name: animate-login;
     animation-duration: 0.7s;
+    
     
 }
 @keyframes animate-login{
@@ -114,10 +115,15 @@ img{
     background-color: teal;
     /* transition: 3s; */
     color: white;
-    font-weight: 600;
+    font-weight: normal;
+    font-size: 20px;
     text-align: center;
-    border-radius: .5rem;
+    border-radius: .3rem;
     margin: 2rem 0;
+    width: 17.5em; 
+    height: 2.4em;
+    outline: none;
+   
 }
 .login_button:hover{
     background-color: gray;
@@ -163,7 +169,7 @@ img{
        overflow: hidden;
     }
     .login_contents{
-        grid-template-columns: repeat(2, max-content);
+        grid-template-columns: repeat(3, max-content);
         justify-content: center;
         margin-left: 5rem;
         margin-top: 0;
@@ -172,23 +178,21 @@ img{
     .login_image{
         display: flex;
         width: 800px;
-        height: 600px;
-        background-color: black;
+        height: 650px;
+        background-color: lavender;
         border-radius: 1rem;
         padding-left: 1rem;
-        
-
-
-    }
+      }
     .login_image img{
+        
         width: 800px;
-        height: auto;
-        margin-top: 1rem;
+        height: 680px;
         border-radius: 1rem;
         box-shadow:  0 8px 20px teal;
     }
     .login_register, .register{
         left: -18rem;
+       
     }
     .login_register{
         bottom: -9.9rem;
@@ -258,9 +262,6 @@ width: 100%;
     padding: .2rem 1rem;
     background-color:white ;
     margin-top: 1rem;
-}
-#index input{
-    background: white;
 }
 .tittle{
     position: relative;

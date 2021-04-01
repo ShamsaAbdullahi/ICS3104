@@ -1,3 +1,19 @@
+<?php
+
+include_once 'db.php';
+include_once 'user.php';
+$con = new DBConnector();    
+$pdo = $con->connectToDB();  
+
+$email = $_GET['email']; 
+$password = $_GET['password']; 
+$user = new USER($email,$password);
+
+$stmt = $pdo->prepare("SELECT * FROM users WHERE email=?");
+
+
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,27 +32,28 @@
         </div>
 
         <div class="tittle">
-        <h2>Jane Doe</h2>
+        <h2>Welcome </h2>
         </div>
         <div class="box">
-            <p><i class="bx bx-user login_icon"></i>janedoe@gmail.com</p>
+            <p><i class="bx bx-user login_icon"></i></p>
 
        </div>
        <div class="box">
-        <p><i class="bx bxs-city login_icon" ></i>Kingston, Jamaica</p>
+        <p><i class="bx bxs-city login_icon" ></i></p>
         
       </div>
 
         <div class="box">
             <i class="bx bx-lock login_icon"></i>
-           <input type="password" name="pass" placeholder="Current Password" class="input">
+           <input type="password" name="password" placeholder="Current Password" class="input">
         </div>
         <div class="box">
             <i class="bx bx-lock login_icon"></i>
-           <input type="password" name="pass" placeholder="New Password" class="input">
+           <input type="password" name="password" placeholder="New Password" class="input">
         </div>
-        
-        <a href="#" class="login_button">Update</a>
+        <input type="submit" class="login_button" name="update" value="update" >
+
+        <!-- <a href="#" class="login_button">Update</a> -->
 
         <a href="#" class="logout"><i class='bx bx-log-out login_icon'></i>Logout</a>
 

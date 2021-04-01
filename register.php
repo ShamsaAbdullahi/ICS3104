@@ -1,3 +1,29 @@
+<?php   
+ include_once 'user.php';    
+ include_once 'db.php';    
+ $con = new DBConnector();    
+ $pdo = $con->connectToDB();   
+      
+ if (isset($_POST["register"])) {              
+       $fullName = $_POST['fullnames'];       
+       $email = $_POST['email']; 
+       $residence=$_POST['residence'];      
+       $password = $_POST['password'];        
+       $user = new User($email,$password);        
+       $user->setFullnames($fullName);
+       $user->setResidence($residence);        
+       echo $user->register($pdo); 
+       
+       
+
+
+    } 
+
+    
+
+?>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,21 +41,36 @@
                     <img src="assets/images/teal.jpg" alt="Login Image">
                 </div>
                 <div class="forms">
-                    <form action="index.php" class="login_register block" id="login_in" method="POST">
-
+      
+                    <form action="" class="login_register block" id="login_in" method="POST">
                         <h1 class="tittle-1">Sign In</h1>
+                        <?php
+                        if (isset($_POST["login"])) {      
+                            $email = $_POST['email1'];        
+                            $password = $_POST['password1'];  
+                            $user = new User($email,$password);       
+                            echo $user->login($pdo);
+                     
+                          
+                                
+                         }else{
+                             $error = "Wrong Details !";
+                         }
+                        ?>
                         <div class="login_box">
                             <i class="bx bx-user login_icon"></i>
-                            <input type="text" name="email" placeholder="Email" class="input">
+                            <input type="text" name="email1" placeholder="Email" class="input">
                        </div>
                    <div class="login_box">
                     <i class="bx bx-lock login_icon"></i>
-                   <input type="password" name="pass" placeholder="Password" class="input">
+                   <input type="password" name="password1" placeholder="Password" class="input">
                 </div>
 
                 <a href="#" class="forgot">Forgot password?</a>
+                
+               <input type="submit" class="login_button" name="login" value="login" >
 
-                <a href="#" name="submit" class="login_button">Sign In</a>
+                <!-- <a href="#" name="submit" class="login_button">Sign In</a> -->
 
                    <div>
                        <span class="account">Don't have an Account?</span>
@@ -45,7 +86,7 @@
 
                     </form>
 
-                    <form action="" class="register none" id="login_up">
+                    <form action="" class="register none" id="login_up" method="POST">
 
                         <h1 class="tittle-1">Create Account</h1>
                         <div class="login_box">
@@ -62,16 +103,13 @@
                </div>
                    <div class="login_box">
                     <i class="bx bx-lock login_icon"></i>
-                   <input type="password" name="pass1" placeholder="Create Password" class="input">
+                   <input type="password" name="password" placeholder="Create Password" class="input">
                 </div>
-                <div class="login_box">
-                    <i class="bx bx-lock login_icon"></i>
-                   <input type="password" name="pass2" placeholder="Confirm Password" class="input">
-                </div>
-
                
 
-                <a href="#" class="login_button">Sign Up</a>
+               
+                <input type="submit" class="login_button" name="register" value="Register" >
+                <!-- <a href="#" name="register" class="login_button">Sign Up</a> -->
 
                    <div>
                        <span class="account">Already have an Account?</span>
